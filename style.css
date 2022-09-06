@@ -1,0 +1,452 @@
+body{
+    background-color: azure;
+
+}
+
+#clock{
+    display: none;
+    color: black;
+    justify-content: left;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+
+
+}
+#blok{
+    display: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+#zzz{
+
+    font-size: 40px;
+    font-weight: bold;
+}
+.according{
+    margin-right: 1000px;
+}
+
+#fot{
+    display: none;
+}
+
+#iii{
+    width: 15%;
+}
+#calendar2 {
+    width: 100%;
+    /*font: monospace;*/
+    line-height: 1.2em;
+    font-size: 15px;
+    text-align: center;
+}
+#calendar2 thead tr:last-child {
+    font-size: small;
+    color: rgb(85, 85, 85);
+}
+#calendar2 thead tr:nth-child(1) td:nth-child(2) {
+    color: rgb(50, 50, 50);
+}
+#calendar2 thead tr:nth-child(1) td:nth-child(1):hover, #calendar2 thead tr:nth-child(1) td:nth-child(3):hover {
+    cursor: pointer;
+}
+#calendar2 tbody td {
+    color: rgb(44, 86, 122);
+}
+#calendar2 tbody td:nth-child(n+6), #calendar2 .holiday {
+    color: rgb(231, 140, 92);
+}
+#calendar2 tbody td.today {
+    background: rgb(220, 0, 0);
+    color: #fff;
+}
+.accordingi{
+    margin-right: 1000px;
+}
+.accordingx{
+    margin-right: 500px;
+}
+#calen{
+    display: none;
+    margin-right: 1300px;
+}
+.accordingz{
+    margin-right: 1000px;
+}
+#myImage{
+    width: 10%;
+}
+* {margin: 0; padding: 0;}
+
+.content {
+    display: flex;
+    margin: 100px 50px 50px 50px;
+    font-family: sans-serif;
+}
+
+#area {
+    width: 156px;
+    border: 1px solid #000;
+    margin: 0 auto;
+    font-size: 0;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    display: inline-block;
+    font-size: 26px;
+    border: 1px solid #000;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: background .1s;
+}
+
+.cell:hover {
+    background-color: #F1F1F1;
+}
+
+.currentPlayer {
+    width: 140px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.stat table {
+    border-collapse: collapse;
+}
+
+.stat table, .stat th, .stat td {
+    border: 1px solid #000;
+    padding: 5px;
+    text-align: center;
+}
+.accordinl{
+    margin-right: 500px;
+}
+#rar{
+    display: none;
+}
+.game{
+    width: 600px;
+    height: 200px;
+    border-bottom: 1px solid #000000;
+}
+#ger{
+    width: 55px;
+    height: 55px;
+    background-image: url("im/pngwing.com.png");
+    background-size: 55px 55px;
+    position: relative;
+    top: 150px;
+}
+#kam{
+    width: 35px;
+    height: 55px;
+    background-image: url("im/pngegg.png");
+    background-size: 40px 60px;
+    position: relative;
+    top: 90px;
+    left: 580px;
+    animation: derMov 1s infinite linear;
+}
+@keyframes derMov {
+    0%{
+        left: 580px;
+    }
+    100%{
+        left: -20px;
+    }
+
+}
+.jump{
+    animation: jump 0.5s linear;
+}
+@keyframes jump {
+    0%{
+        top: 130px;
+    }
+    30%{
+        top: 100px;
+    }
+    50%{
+        top: 70px;
+    }
+    80%{
+        top: 100px;
+    }
+    100%{
+        left: -130px;
+    }
+
+}
+/*.hidden{*/
+/*    display: none;*/
+/*}*/
+.heh{
+    /*display: none;*/
+    /*width: 500%;*/
+}
+.accordingoo{
+    margin-right: 500px;
+}
+.menu ul {
+    margin: 0;
+    list-style: none;
+    padding-left: 20px;
+    display: none;
+}
+
+.menu .title::before {
+    content: '▶ ';
+    font-size: 80%;
+    color: green;
+}
+.menu.open .title::before {
+    content: '▼ ';
+}
+
+.menu.open ul {
+    display: block;
+}
+.accordinnn{
+    margin-right: 500px;
+}
+.int{
+    display: none;
+}
+.pa{
+    display: none;
+}
+.accordidd{
+    margin-right: 500px;
+}
+.ziro{
+    display: none;
+}
+.submenu{display:none;}
+.accordiooo{
+    margin-right: 1000px;
+}
+.anketa{
+    display: none;
+}
+.col{
+    display: flex;
+    flex-direction: column;
+}
+.col{
+    background-color: lightsalmon;
+}
+.animation-navigatsiya {
+    height: 72px;
+    background: #232222;
+    border-bottom: 2px solid;
+    border-color: #736f6f;
+}
+
+.akache-stvodas {
+    position: absolute;
+    padding-left: 20px;
+    float: left;
+    line-height: 72px;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+.akache-stvodas a, .akache-stvodas a:visited {
+    color: #efecec;
+    text-decoration: none;
+}
+
+.demesan-kusecega {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/*nav {*/
+/*    float: right;*/
+/*}*/
+/*nav ul {*/
+/*    list-style: none;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+/*nav ul li {*/
+/*    float: left;*/
+/*    position: relative;*/
+/*}*/
+
+/*nav ul li a, nav ul li a:visited {*/
+/*    display: block;*/
+/*    padding: 0 12px;*/
+/*    line-height: 72px;*/
+/*    background: #232121;*/
+/*    color: #f5f5f5;*/
+/*    text-decoration: none;*/
+/*    text-transform: uppercase;*/
+/*    font-size: 14px;*/
+/*}*/
+
+/*nav ul li a:hover, nav ul li a:visited:hover {*/
+/*    background: #13589c;*/
+/*    color: #fbf9f9;*/
+/*}*/
+
+/*nav ul li a:not(:only-child):after,*/
+/*nav ul li a:visited:not(:only-child):after {*/
+/*    padding-left: 4px;*/
+/*    content: ' ▾';*/
+/*}*/
+/*nav ul li ul li {*/
+/*    min-width: 190px;*/
+/*}*/
+/*nav ul li ul li a {*/
+/*    padding: 15px;*/
+/*    line-height: 20px;*/
+/*}*/
+
+/*.nalumes-nucludem {*/
+/*    position: absolute;*/
+/*    display: none;*/
+/*    z-index: 1;*/
+/*    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);*/
+/*}*/
+
+/*.nav-mobile {*/
+/*    display: none;*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    right: 0;*/
+/*    background: #232222;*/
+/*    height: 72px;*/
+/*    width: 70px;*/
+/*}*/
+
+/*@media only screen and (max-width: 860px) {*/
+/*    .nav-mobile {*/
+/*        display: block;*/
+/*    }*/
+
+/*    nav {*/
+/*        width: 100%;*/
+/*        padding: 70px 0 15px;*/
+/*    }*/
+/*    nav ul {*/
+/*        display: none;*/
+/*    }*/
+/*    nav ul li {*/
+/*        float: none;*/
+/*    }*/
+/*    nav ul li a {*/
+/*        padding: 15px;*/
+/*        line-height: 20px;*/
+/*    }*/
+/*    nav ul li ul li a {*/
+/*        padding-left: 30px;*/
+/*    }*/
+
+/*    .nalumes-nucludem {*/
+/*        position: static;*/
+/*    }*/
+/*}*/
+/*@media screen and (min-width: 799px) {*/
+/*    .nav-list {*/
+/*        display: block!important;*/
+/*    }*/
+
+/*    .nav-list li:hover .nalumes-nucludem {*/
+/*        display: block!important;*/
+/*    }*/
+/*}*/
+/*#sadas-polnyus {*/
+/*    position: absolute;*/
+/*    left: 18px;*/
+/*    top: 22px;*/
+/*    cursor: pointer;*/
+/*    padding: 10px 35px 16px 0px;*/
+/*}*/
+/*#sadas-polnyus span,*/
+/*#sadas-polnyus span:before,*/
+/*#sadas-polnyus span:after {*/
+/*    cursor: pointer;*/
+/*    border-radius: 1px;*/
+/*    height: 5px;*/
+/*    width: 35px;*/
+/*    background: #ffffff;*/
+/*    position: absolute;*/
+/*    display: block;*/
+/*    content: '';*/
+/*    transition: all 300ms ease-in-out;*/
+/*}*/
+/*#sadas-polnyus span:before {*/
+/*    top: -10px;*/
+/*}*/
+/*#sadas-polnyus span:after {*/
+/*    bottom: -10px;*/
+/*}*/
+/*#sadas-polnyus.active span {*/
+/*    background-color: transparent;*/
+/*}*/
+/*#sadas-polnyus.active span:before, #sadas-polnyus.active span:after {*/
+/*    top: 0;*/
+/*}*/
+/*#sadas-polnyus.active span:before {*/
+/*    transform: rotate(45deg);*/
+/*}*/
+/*#sadas-polnyus.active span:after {*/
+/*    transform: rotate(-45deg);*/
+/*}*/
+#ddmenu {
+    display: block;
+    width: 100%;
+    height: 80px;
+    margin: 0 auto;
+    padding: 0 15px;
+    background: #000000;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 1px rgba(20, 20, 20, 0.2);
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+    color: #8aa8bd;
+}
+#ddmenu li { display: block; position: relative; float: left; font-size: 1.45em; text-shadow: 1px 1px 0 #000000; border-right: 1px solid #736f6f; }
+#ddmenu li a {
+    display: block;
+    float: left;
+    padding: 0 12px;
+    line-height: 78px;
+    font-weight: bold;
+    text-decoration: none;
+    color: lightsalmon;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+#ddmenu li:hover > a { color: #7180a0; background: #d9e2ee; }
+#ddmenu ul {
+    position: absolute;
+    top: 88px;
+    width: 130px;
+    background: #000000;
+    display: none;
+    margin: 0;
+    padding: 7px 0;
+    list-style: none;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}

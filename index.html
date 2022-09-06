@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="script" href="time.js">
+    <title>Document</title>
+</head>
+<body>
+
+<!--<nav>-->
+<!--    <ul id="ddmenu">-->
+<!--        <li><a href="#">Владосик</a></li>-->
+<!--        <li><a href="#">Мои умения</a>-->
+<!--            <ul>-->
+<!--                <li><a href="#">html</a></li>-->
+<!--                <li><a href="#">css</a></li>-->
+<!--                <li><a href="#">js</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--        <li><a href="#">Работы</a>-->
+<!--            <ul>-->
+<!--                <li><a href="#">№1</a></li>-->
+<!--                <li><a href="#">№2</a></li>-->
+<!--                <li><a href="#">№3</a></li>-->
+<!--                <li><a href="#">№4</a></li>-->
+<!--                <li><a href="#">№5</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--        <li><a href="#">Виды услуг</a>-->
+<!--            <ul>-->
+<!--                <li><a href="#">Дистант</a></li>-->
+<!--                <li><a href="#">Очно</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--        <li><a href="#">Контакты</a></li>-->
+<!--    </ul>-->
+<!--</nav>-->
+<div id="zzz">Задание по JS - Вариант 20</div>
+    <button class="accordingx" >Задание 1- Дата/время</button>
+        <div id="clock">
+        <script>
+            var  acc = document.getElementsByClassName("accordingx")
+            var  i;
+            for (i = 0; i<acc.length;i++)
+                acc[i].addEventListener("click", function (){
+                    var panel = this.nextElementSibling;
+                    if (panel.style.display === "flex"){
+                        panel.style.display = "none";
+                    }
+                    else {
+                        panel.style.display = "flex";
+                    }
+                });
+        </script>
+        <script >
+            window.onload = function (){
+                window.setInterval(function (){
+                    var date = new Date();
+                    var dan_n = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+                    var day = ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"]
+                    var mes = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня",
+                        "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
+                    var got = date.getFullYear()
+                    var data = dan_n[date.getDay()] + "," + day[date.getDate()] + "-" + mes[date.getMonth()] + "-" + got;
+                    var hours = date.getHours()
+                    var min = date.getMinutes()
+                    var sec = date.getSeconds()
+                    var clock = hours + "-" + min + "-" + sec;
+                    if (hours>=5 && hours<12) greeting = "Утро";
+                        else { if (hours>=12 && hours<18) greeting = "День";
+                            else { if (hours>=18 && hours<24) greeting = "Вечер";
+                                else { if (hours>=0 && hours<5) greeting = "Ночь"; } } }
+                    document.getElementById("clock").innerHTML = data +"  , " + clock + ", " + greeting;
+                });
+            }
+        </script>
+    </div>
+    <button class="accordingi" >Задание 2 - календарь</button>
+        <div id="calen">
+            <script>
+                var  acc = document.getElementsByClassName("accordingi")
+                var  i;
+                for (i = 0; i<acc.length;i++)
+                    acc[i].addEventListener("click", function (){
+                        var panel = this.nextElementSibling;
+                        if (panel.style.display === "flex"){
+                            panel.style.display = "none";
+                        }
+                        else {
+                            panel.style.display = "flex";
+                        }
+                    });
+            </script>
+            <table id="calendar2">
+                <thead>
+                <tr><td>‹<td colspan="5"><td>›
+                <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+                <tbody>
+            </table>
+            <script>
+                function Calendar2(id, year, month) {
+                    var Dlast = new Date(year,month+1,0).getDate(),
+                        D = new Date(year,month,Dlast),
+                        DNlast = new Date(D.getFullYear(),D.getMonth(),Dlast).getDay(),
+                        DNfirst = new Date(D.getFullYear(),D.getMonth(),1).getDay(),
+                        calendar = '<tr>',
+                        month=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+                    if (DNfirst != 0) {
+                        for(var  i = 1; i < DNfirst; i++) calendar += '<td>';
+                    }else{
+                        for(var  i = 0; i < 6; i++) calendar += '<td>';
+                    }
+                    for(var  i = 1; i <= Dlast; i++) {
+                        if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
+                            calendar += '<td class="today">' + i;
+                        }else{
+                            calendar += '<td>' + i;
+                        }
+                        if (new Date(D.getFullYear(),D.getMonth(),i).getDay() == 0) {
+                            calendar += '<tr>';
+                        }
+                    }
+                    for(var  i = DNlast; i < 7; i++) calendar += '<td>&nbsp;';
+                    document.querySelector('#'+id+' tbody').innerHTML = calendar;
+                    document.querySelector('#'+id+' thead td:nth-child(2)').innerHTML = month[D.getMonth()] +' '+ D.getFullYear();
+                    document.querySelector('#'+id+' thead td:nth-child(2)').dataset.month = D.getMonth();
+                    document.querySelector('#'+id+' thead td:nth-child(2)').dataset.year = D.getFullYear();
+                    if (document.querySelectorAll('#'+id+' tbody tr').length < 6) {  // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр
+                        document.querySelector('#'+id+' tbody').innerHTML += '<tr><td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;';
+                    }
+                }
+                Calendar2("calendar2", new Date().getFullYear(), new Date().getMonth());
+                // переключатель минус месяц
+                document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(1)').onclick = function() {
+                    Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month)-1);
+                }
+                // переключатель плюс месяц
+                document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(3)').onclick = function() {
+                    Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month)+1);
+                }
+            </script>
+    </div>
+    <button class="according" >Задание 3- Сформировать массив дочерних элементов (DIV) DOM-дерева, вывести число этих элементов</button>
+        <div id="blok">
+        <script>
+            var  acc = document.getElementsByClassName("according")
+            var  i;
+            for (i = 0; i<acc.length;i++)
+                acc[i].addEventListener("click", function (){
+                    var panel = this.nextElementSibling;
+                    if (panel.style.display === "flex"){
+                        panel.style.display = "none";
+                    }
+                    else {
+                        panel.style.display = "flex";
+                    }
+                });
+        </script>
+        <script >
+            let elements = document.querySelectorAll('div');
+            z = elements.length
+            document.getElementById("blok").innerHTML = "Число блоков в массиве    "+ z;
+        </script>
+    </div>
+    <button class="accordingz">Задание 4 - Игра (Крестики нолики) </button>
+        <div id="fot">
+            <script>
+                var  acc = document.getElementsByClassName("accordingz")
+                var  i;
+                for (i = 0; i<acc.length;i++)
+                    acc[i].addEventListener("click", function (){
+                        var panel = this.nextElementSibling;
+                        if (panel.style.display === "flex"){
+                            panel.style.display = "none";
+                        }
+                        else {
+                            panel.style.display = "flex";
+                        }
+                    });
+            </script>
+            <div class="content">
+
+                <div class="currentPlayer">
+                    <span>Сейчас ходит: <span id="curPlyr">X</span></span>
+                </div>
+
+                <div id="area"></div>
+
+                <div class="stat">
+                    <table>
+                        <th colspan="2">Статистика</th>
+                        <tr>
+                            <td>X</td>
+                            <td><span id="sX">0</span></td>
+                        </tr>
+                        <tr>
+                            <td>O</td>
+                            <td><span id="sO">0</span></td>
+                        </tr>
+                        <tr>
+                            <td>Ничьи</td>
+                            <td><span id="sD">0</span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <script src="time.js"></script>
+            </div>
+        </div>
+    <button class="accordinl"> Задание 5 - Игра</button>
+        <div id = "rar">
+            <script>
+                var  acc = document.getElementsByClassName("accordinl")
+                var  i;
+                for (i = 0; i<acc.length;i++)
+                    acc[i].addEventListener("click", function (){
+                        var panel = this.nextElementSibling;
+                        if (panel.style.display === "flex"){
+                            panel.style.display = "none";
+                        }
+                        else {
+                            panel.style.display = "flex";
+                        }
+                    });
+            </script>
+            <div class="game">
+                <div id="ger"></div>
+                <div id="kam"></div>
+            </div>
+            <script src="script.js"></script>
+        </div>
+    <button class="accordingoo">Задание 6 Через указанный промежуток времени 150мс перекрашивать блок (номер блока и цвет выбирается рандомно)</button>
+        <div class="pa">
+            <script>
+                var  acc = document.getElementsByClassName("accordingoo")
+                var  i;
+                for (i = 0; i<acc.length;i++)
+                    acc[i].addEventListener("click", function (){
+                        var panel = this.nextElementSibling;
+                        if (panel.style.display === "flex"){
+                            panel.style.display = "none";
+                        }
+                        else {
+                            panel.style.display = "flex";
+                        }
+                    });
+            </script>
+            <div id="bla">
+                <div class="hidden">Я</div>
+                <div class="hidden">Ты</div>
+                <div class="hidden">Он</div>
+                <div class="hidden">Она</div>
+                <div class="hidden">Они</div>
+            </div>
+            <script>setTimeout(four,150)</script>
+        </div>
+    <button class="accordinnn"> задание 7 Создайте меню, которое раскрывается/сворачивается при клике</button>
+        <div class="int" >
+        <script>
+            var  acc = document.getElementsByClassName("accordinnn")
+            var  i;
+            for (i = 0; i<acc.length;i++)
+                acc[i].addEventListener("click", function (){
+                    var panel = this.nextElementSibling;
+                    if (panel.style.display === "flex"){
+                        panel.style.display = "none";
+                    }
+                    else {
+                        panel.style.display = "flex";
+                    }
+                });
+        </script>
+
+            <div id="sweeties" class="menu open">
+                <span class="title">Сладости (нажми меня)!</span>
+                <ul id="reter">
+                    <li>Тортик</li>
+                    <li>Конфеты</li>
+                    <li>Мороженое</li>
+                </ul>
+                <div>Сладости закончились</div>
+
+            </div>
+
+            <script>
+                let menuElem = document.getElementById('sweeties');
+                let titleElem = menuElem.querySelector('.title');
+
+                titleElem.onclick = function() {
+                    menuElem.classList.toggle('open');
+
+                };
+                var removeButton = document.getElementById("sweeties");
+
+                removeButton.addEventListener("click", removeItem);
+
+                function removeItem() {
+                    var list=document.getElementById("reter");
+                    var listItems = list.getElementsByTagName("li");
+
+                    var last=listItems[listItems.length-1];
+                    list.removeChild(last);
+
+
+                }
+            </script>
+
+        </div>
+    <button class="accordidd">Задание 8 Добавление элемента</button>
+        <div class="ziro">
+            <script>
+                var  acc = document.getElementsByClassName("accordidd")
+                var  i;
+                for (i = 0; i<acc.length;i++)
+                    acc[i].addEventListener("click", function (){
+                        var panel = this.nextElementSibling;
+                        if (panel.style.display === "flex"){
+                            panel.style.display = "none";
+                        }
+                        else {
+                            panel.style.display = "flex";
+                        }
+                    });
+            </script>
+            <div class="pass">
+                <div class="five">
+                    <p>
+                    <ul id="list">
+                        <li id="element1">Владик</li>
+                        <li id="element2">Лёня</li>
+                        <li id="element3">Андрей</li>
+                    </ul>
+                    <br>
+                    <div class="btn" onClick="addAnother()"> Добавить элемент </div>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    <button class="accordiooo">Задание 9 Анкета</button>
+        <div class="anketa">
+            <script>
+                var  acc = document.getElementsByClassName("accordiooo")
+                var  i;
+                for (i = 0; i<acc.length;i++)
+                    acc[i].addEventListener("click", function (){
+                        var panel = this.nextElementSibling;
+                        if (panel.style.display === "flex"){
+                            panel.style.display = "none";
+                        }
+                        else {
+                            panel.style.display = "flex";
+                        }
+                    });
+            </script>
+            <div class="col">
+                <div class="formaa">
+
+                    <div class="forma-num">
+                        <form name="Sel1">
+                            <table>
+                                <div class="formaa">
+                                    <tr>
+                                        <div class="formaa">
+                                            <td><b>Имя:</b></td>
+                                            <td><input id="Name" size=20 onFocus="className='styleField'"
+                                                       onBlur="regName()">
+                                                <div id="divName" class="warning"></div>
+                                            </td>
+                                        </div>
+                                    </tr>
+                                    <TR>
+                                        <div class="formaa">
+                                            <td><B>Пароль:</B></td>
+                                            <td><input id="Password_One" size=20 onFocus="classPassword='styleField'"
+                                                       onBlur="regPassword()">
+                                                <div id="divPassword" class="warning"></div>
+                                            </td>
+                                        </div>
+                                    </TR>
+                                    <tr>
+                                        <div class="formaa">
+                                            <td><B>Подтвердите пароль:</B></td>
+                                            <td><input id="Password_Two" size=20 onFocus="classPassword='styleField'"
+                                                       onBlur="regPassword()">
+                                                <div id="divPassword_Two" class="warning"></div>
+                                            </td>
+                                        </div>
+                                    </tr>
+                                    <TR>
+                                        <div class="formaa">
+                                            <TD><B>Телефон:</B></td>
+                                            <td><input id="Phone" size=20 onFocus="classPhone='styleField'"
+                                                       onBlur="regPhone()">
+                                                <div id="divPhone" class="warning"></div>
+                                            </td>
+                                        </div>
+                                    </TR>
+                                    <TR>
+                                        <div class="formaa">
+                                            <TD><B>Email:</B></td>
+                                            <td><input id="Email" name="Email" type="email" size="20"
+                                                       onFocus="classEmail='styleField'" onBlur="regEmail()">
+                                                <div id="divEmail" class="warning"></div><br />
+                                            </td>
+                                        </div>
+                                    </TR>
+                                    <tr>
+                                        <div class="formaa">
+                                            <td><b>Пол:</b></td>
+                                            <td><label>Ж<INPUT TYPE="radio" NAME="Code" VALUE="Ж"
+                                                               onClick="if(this.checked) CheckRadio(this.form,this.value);">
+                                            </label>
+                                                <label>М<INPUT TYPE="radio" NAME="Code" VALUE="М"
+                                                               onClick="if(this.checked) CheckRadio(this.form,this.value);">
+                                                </label>
+                                            </td>
+                                        </div>
+                                    </tr>
+                                    <TR>
+                                        <div class="formaa">
+                                            <TD><B>Факультет:</B></td>
+                                            <td><input id="facultet" name="facultet" size="20"
+                                                       onFocus="classFacultet='styleField'" onBlur="regFacultet()" /><br />
+                                                <div id="divFacultet" class="warning"></div>
+                                            </td>
+                                        </div>
+                                    </TR>
+                                    <TR>
+                                        <div class="formaa">
+                                            <TD><B>Кафедра:</B></td>
+                                            <td><input id="cafedra" name="cafedra" size="20"
+                                                       onFocus="classCafedra='styleField'" onBlur="regCafedra()" /><br />
+                                                <div id="divCafedra" class="warning"></div>
+                                            </td>
+                                        </div>
+                                    </TR>
+                                    <tr>
+                                        <div class="formaa">
+                                            <td><b>Ваши навыки: </b></td>
+                                            <td>
+                                                <INPUT TYPE="checkbox" NAME="ch" value="знание HTML и CSS">знание
+                                                HTML и
+                                                CSS<br>
+                                                <INPUT TYPE="checkbox" NAME="ch" value="знание HTML и CSS"> знание
+                                                Ruby<br>
+                                                <INPUT TYPE="checkbox" NAME="ch" value="знание HTML и CSS"> знание
+                                                Java<br>
+                                                <INPUT TYPE="checkbox" NAME="ch" value="знание HTML и CSS"> знание
+                                                Java-Script<br>
+                                                <INPUT TYPE="checkbox" NAME="ch" value="знание HTML и CSS"> знание
+                                                C++<br>
+                                                <INPUT TYPE="checkbox" NAME="ch" value="знание HTML и CSS"> знание
+                                                C#<br>
+                                                <INPUT TYPE="checkbox" NAME="ch" value="знание HTML и CSS"> знание
+                                                Perl<br>
+                                                <INPUT TYPE="checkbox" NAME="ch" value="знание HTML и CSS"> знание
+                                                SQL<br>
+                                                <INPUT TYPE="checkbox" NAME="ch" value="знание HTML и CSS"> знание
+                                                Python
+                                            </td>
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <div class="formaa">
+                                            <td><b>Ваша специализация: </b></td>
+                                            <td>
+                                                <select id="mySelectId" name="mySelect">
+                                                    <option value="Web-разработчик"> Web-разработчик </option>
+                                                    <option value="Разработчик (JS)"> Разработчик (JS) </option>
+                                                    <option value="Разработчик (Python)"> Разработчик (Python)
+                                                    </option>
+                                                    <option value="Разработчик SQL-данных"> Разработчик SQL-данных
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <div class="formaa">
+                                            <td><b>Страна проживания: </b></td>
+                                            <td>
+                                                <select id="mySelectId" name="mySelect2">
+                                                    <option value="Россия"> Россия </option>
+                                                    <option value="Армения"> Армения </option>
+                                                    <option value="Турция"> Турция </option>
+                                                    <option value="Болгария"> Болгария </option>
+                                                </select>
+                                            </td>
+                                        </div>
+                                    </tr>
+                                </div>
+                            </table>
+                            <div class="formaa">
+                                <input TYPE="button" value="Зарегистрировать" onClick="Complete();">
+                                <input TYPE="reset" value="Отчистить форму">
+                            </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
